@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <QPN.Title>Quest-progression calculation type</QPN.Title>
+  <QPN.Default>Mod-default</QPN.Default>
+  <QPN.Default.Tooltip>The recommended value</QPN.Default.Tooltip>
+  <QPN.Default.Formula>Current formula:
+(1f - 0.75f / (1f + Mathf.Exp(-0.1f * vanillaValue))) * vanillaValue</QPN.Default.Formula>
+  <QPN.High>High</QPN.High>
+  <QPN.High.Tooltip>A more challenging value, still less than vanilla</QPN.High.Tooltip>
+  <QPN.High.Formula>Current formula:
+(1f - 0.5f / (1f + Mathf.Exp(-0.1f * vanillaValue))) * vanillaValue</QPN.High.Formula>
+  <QPN.VerboseLogging>Verbose logging</QPN.VerboseLogging>
+  <QPN.ModVersion>Installed mod-version: {0}</QPN.ModVersion>
+</LanguageData>
