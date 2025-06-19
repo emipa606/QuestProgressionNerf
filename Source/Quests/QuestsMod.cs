@@ -10,7 +10,7 @@ internal class QuestsMod : Mod
     /// <summary>
     ///     The instance of the settings to be read by the mod
     /// </summary>
-    public static QuestsMod instance;
+    public static QuestsMod Instance;
 
     private static string currentVersion;
 
@@ -20,7 +20,7 @@ internal class QuestsMod : Mod
     /// <param name="content"></param>
     public QuestsMod(ModContentPack content) : base(content)
     {
-        instance = this;
+        Instance = this;
         Settings = GetSettings<QuestsSettings>();
         currentVersion = VersionFromManifest.GetVersionFromModMetaData(content.ModMetaData);
     }
@@ -46,37 +46,37 @@ internal class QuestsMod : Mod
     /// <param name="rect"></param>
     public override void DoSettingsWindowContents(Rect rect)
     {
-        var listing_Standard = new Listing_Standard();
-        listing_Standard.Begin(rect);
-        listing_Standard.Label("QPN.Title".Translate());
-        listing_Standard.Gap();
+        var listingStandard = new Listing_Standard();
+        listingStandard.Begin(rect);
+        listingStandard.Label("QPN.Title".Translate());
+        listingStandard.Gap();
 
-        if (listing_Standard.RadioButton("QPN.Default".Translate(), !Settings.UseHigh,
+        if (listingStandard.RadioButton("QPN.Default".Translate(), !Settings.UseHigh,
                 tooltip: "QPN.Default.Tooltip".Translate()))
         {
             Settings.UseHigh = false;
         }
 
-        if (listing_Standard.RadioButton("QPN.High".Translate(), Settings.UseHigh,
+        if (listingStandard.RadioButton("QPN.High".Translate(), Settings.UseHigh,
                 tooltip: "QPN.High.Tooltip".Translate()))
         {
             Settings.UseHigh = true;
         }
 
-        listing_Standard.Gap();
-        listing_Standard.Label(Settings.UseHigh ? "QPN.High.Formula".Translate() : "QPN.Default.Formula".Translate());
+        listingStandard.Gap();
+        listingStandard.Label(Settings.UseHigh ? "QPN.High.Formula".Translate() : "QPN.Default.Formula".Translate());
 
-        listing_Standard.Gap();
-        listing_Standard.CheckboxLabeled("QPN.VerboseLogging".Translate(), ref Settings.VerboseLogging);
+        listingStandard.Gap();
+        listingStandard.CheckboxLabeled("QPN.VerboseLogging".Translate(), ref Settings.VerboseLogging);
 
         if (currentVersion != null)
         {
-            listing_Standard.Gap();
+            listingStandard.Gap();
             GUI.contentColor = Color.gray;
-            listing_Standard.Label("QPN.ModVersion".Translate(currentVersion));
+            listingStandard.Label("QPN.ModVersion".Translate(currentVersion));
             GUI.contentColor = Color.white;
         }
 
-        listing_Standard.End();
+        listingStandard.End();
     }
 }
